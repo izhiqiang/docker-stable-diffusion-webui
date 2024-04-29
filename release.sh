@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.9.0"
+version="1.9.1"
 
 # 登录仓库
 docker login -u $DOCKER_USER -p $DOCKER_PWD
