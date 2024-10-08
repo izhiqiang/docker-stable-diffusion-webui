@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  sd-webui:
+    image: zhiqiangwang/stable-diffusion-webui:latest
+    container_name: sd-cpu
+    ports:
+      - "7860:7860"
+    environment:
+      - CLI_ARGS=--skip-torch-cuda-test --use-cpu all --no-download-sd-model --xformers --opt-channelslast
+    volumes:
+      - ./sd/extensions:/sd/stable-diffusion-webui/extensions
+      - ./sd/textual_inversion_templates:/sd/stable-diffusion-webui/textual_inversion_templates
+      - ./sd/embeddings:/sd/stable-diffusion-webui/embeddings
+      - ./sd/models:/sd/stable-diffusion-webui/models
+      - ./sd/localizations:/sd/stable-diffusion-webui/localizations
+      - ./sd/inputs:/sd/stable-diffusion-webui/inputs
+      - ./sd/outputs:/sd/stable-diffusion-webui/outputs
+    restart: unless-stopped
